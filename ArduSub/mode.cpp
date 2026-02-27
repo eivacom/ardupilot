@@ -98,9 +98,9 @@ bool Sub::set_mode(Mode::Number mode, ModeReason reason)
     if (!sub.control_check_barometer() && // maybe use ekf_alt_ok() instead?
         flightmode->has_manual_throttle() &&
         !new_flightmode->has_manual_throttle()) {
-        gcs().send_text(MAV_SEVERITY_WARNING, "Mode change failed: %s need alt estimate", new_flightmode->name());
+        gcs().send_text(MAV_SEVERITY_WARNING, "(EIVA)Mode change failed: %s need alt estimate", new_flightmode->name());
         LOGGER_WRITE_ERROR(LogErrorSubsystem::FLIGHT_MODE, LogErrorCode(mode));
-        return false;
+        //return false;
     }
 
     if (!new_flightmode->init(false)) {
